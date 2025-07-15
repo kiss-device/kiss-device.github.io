@@ -1,0 +1,186 @@
+@font-face {
+    font-family: OpenSans;
+    src: url("fonts/OpenSans.ttf");
+}
+
+body {
+    background: #050505;
+}
+
+.header, .input-wrapper {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > span {
+    font-family: OpenSans;
+    color: #f5f5f5;
+    font-size: 2.5em;
+    font-weight: 500;
+}
+
+#forgot-header {
+    font-size: 2em;
+}
+
+.input-wrapper {
+    margin-top: 5vh;
+}
+
+.ip-box {
+    font-size: 18px;
+    color: #f5f5f5;
+    font-family: Arial;
+    background-color: #111111;
+    border-radius: 10px;
+    height: 4vh;
+    margin-bottom: 0.5vh;
+}
+
+#password-ip {
+    margin-top: 2vh;
+}
+
+.cta {
+    background-color: #222;
+    width: 60vw;
+    height: 5vh;
+    font-size: 20px;
+    font-family: Arial;
+    margin-top: 2vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+#signup-cta {
+    margin-top: 2vh;
+    text-decoration: none;
+}
+
+#link {
+    color: #f5f5f5;
+    font-size: 1em;
+    margin-top: 1vh;
+}
+
+#top-img-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+#middle-img-holder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.floating-img {
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.footer-text {
+    color: #f5f5f5;
+    font-size: 1em;
+    font-family: Arial;
+    margin-top: 1vh;
+}
+
+dialog {
+    background-color: #111;
+    color: #f5f5f5;
+    font-family: Arial;
+    border-color:#f8f8f8;
+}
+
+.dialog-button {
+    background-color: #222;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+/* Google Sign-in Button Specific Styles */
+.google-style-button {
+    width: 60vw;
+    height: 5vh;
+    padding: 15px 20px;
+    background-color: #4285F4; /* Google blue */
+    color: white; /* White text for contrast */
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 10px; /* Space from element above */
+    margin-bottom: 20px; /* Space from element below */
+    box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3); /* Subtle shadow */
+    display: flex; /* To align icon and text */
+    align-items: center; /* Vertically center icon and text */
+    justify-content: center; /* Horizontally center icon and text */
+    gap: 10px; /* Space between the icon and text */
+}
+
+.google-style-button:hover {
+    background-color: #357ae8; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(66, 133, 244, 0.4); /* Enhanced shadow on hover */
+}
+
+.google-style-button:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 2px 4px rgba(66, 133, 244, 0.2);
+}
+
+/* If you have an image inside the button, you might need this to override generic image styles */
+.google-style-button img {
+    height: 20px; /* Standard icon size */
+    width: auto;
+    /* Remove any conflicting margins from general img rules if present */
+    margin-bottom: 0;
+}
+
+
+/* --- Responsive Adjustments for the Google Button --- */
+@media (max-width: 768px) {
+    .google-style-button {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    .google-style-button img {
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .google-style-button {
+        font-size: 0.95rem;
+    }
+    .google-style-button img {
+        height: 16px;
+    }
+}
