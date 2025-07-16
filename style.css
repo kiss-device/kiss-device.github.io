@@ -15,11 +15,17 @@ body {
     align-items: center;
 }
 
-.header > span {
+.header > span, .success-text {
     font-family: OpenSans;
     color: #f5f5f5;
     font-size: 2.5em;
     font-weight: 500;
+}
+
+.success-text {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: left;
 }
 
 #forgot-header {
@@ -28,6 +34,12 @@ body {
 
 .input-wrapper {
     margin-top: 5vh;
+}
+
+.device-img {
+    height: 50vh;
+    width: 70vw;
+    margin-top: -7vh;
 }
 
 .ip-box {
