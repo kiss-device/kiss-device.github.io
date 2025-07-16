@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>KISS Device Forgot Password</title>
+        <title>KISS Device Login</title>
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
     <body>
+        <div id="top-img-holder">
+            <img src="images/login_pink_alien.png" class="floating-img"/>
+            <img src="images/login_bird.png" class="floating-img"/>
+        </div>
+
         </div>
         <div class="header">
-            <span id="forgot-header">Forgot Password?</span><br>
+            <span>Successful</span><br>
+            <span>Sign in!</span>
+        </div>
+        <div id="middle-img-holder">
+            <img src="images/login_alien.png" class="floating-img"/>
         </div>
         <div class="input-wrapper">
-            <input id="email-ip-fp" class = "ip-box" placeholder="Enter email address"/>
-            <div id="reset-cta" class="cta" onclick="handleForgotPassword()">Send Reset Link</div>
-            <!-- <span class="footer-text">Remembered password? <a id="link" href="/bubble_app_login/index.html">Login</a></span> -->
+            <div id="signout-cta" class="cta" onclick="handleSignOut()">Sign Out</div>
         </div>
         <dialog>
             <p id="dialog-text"></p>
