@@ -125,7 +125,7 @@ async function handleForgotPassword() {
 
     try {
         const { error } = await _supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/kiss_app_main_signup/update-password.html' // URL where user will land after clicking reset link
+            redirectTo: 'https://kiss-device.github.io/update-password.html' // URL where user will land after clicking reset link
         });
         if (error) {
             showDialog(`<b>Error:</b> ${error.message}`);
@@ -175,7 +175,7 @@ async function handleGoogleSignIn() {
                 // It should be a page in YOUR app where you want the user to land
                 // after a successful Google login/signup.
                 // For example, your dashboard or main app page.
-                redirectTo: window.location.origin + '/kiss_app_main_signup/success.html'
+                redirectTo: window.location.origin + '/success.html'
             }
         });
 
