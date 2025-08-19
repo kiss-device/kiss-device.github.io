@@ -95,7 +95,7 @@ async function handleSignIn() {
         showDialog(`<b>Sign in error:</b> ${error.message}`);
         console.error('Sign in error:', error.message);
     } else {
-        window.location.pathname = "kiss_app_main_signup/index.html"
+        window.location.pathname = "/index.html"
         console.log('Sign in data:', data);
         
     }
@@ -108,7 +108,7 @@ async function handleSignOut() {
             showDialog(`<b>Sign out error:</b> ${error.message}`);
         } else {
             // Redirect to login page after sign out
-            window.location.pathname = 'kiss_app_main_signup/index.html';
+            window.location.pathname = '/index.html';
         }
     } catch (err) {
         showDialog(`<b>An unexpected error occurred:</b> ${err.message}`);
@@ -158,7 +158,7 @@ async function handleUpdatePassword() {
             showDialog(`Failed to update password: ${error.message}`, true);
         } else {
             showDialog("Password updated successfully! You can now log in with your new password.", false);
-            window.location.pathname = 'kiss_app_main_signup/index.html';
+            window.location.pathname = '/index.html';
         }
     } catch (err) {
         showDialog(`An unexpected error occurred: ${err.message}`, true);
