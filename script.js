@@ -1,3 +1,4 @@
+import { BACKEND_URL } from './config.js';
 // --- Supabase Client Initialization ---
 const { createClient } = supabase
 const SUPABASE_URL = 'https://jdamkaxhjsnoadheacjq.supabase.co';
@@ -48,39 +49,54 @@ async function handleSignUp() {
     } else {
         //Sign Up Logic
         try {
-            const { data, error } = await _supabase.auth.signUp({
-                email: emailInput,
-                password: passwordInput,
-                options: {
-                    // This 'data' object is where you put extra metadata
-                    data: {
-                        name: nameInput,
-                        mobile: mobileInput, // Store as string if not using for calculations
-                        age: ageInput ? parseInt(ageInput, 10) : null // Convert age to a number or null if empty
-                    }
-                }
+            // 1. Prepare the data for the backend
+            // Split name into First and Last since backend typically expects separated names
+            const nameParts = nameInput.trim().split(' ');
+            const firstName = nameParts[0];
+            const lastName = nameParts.slice(1).join(' ') || '';
+
+            // 2. Send request to Express Backend (Not Supabase directly)
+            const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: emailInput,
+                    password: passwordInput,
+                    firstName: firstName,
+                    lastName: lastName,
+                    // Pass these so backend can add them to metadata
+                    mobile: mobileInput,
+                    age: ageInput ? parseInt(ageInput, 10) : null
+                })
             });
-    
-            if (error) {
-                showDialog(`<b>Sign up error:</b> ${error.message}`);
-                console.error('Supabase Sign Up Error:', error.message);
+
+            const data = await response.json();
+
+            // 3. Handle Errors based on Backend Response
+            if (!response.ok) {
+                // Determine error message (data.error might come from your backend error handler)
+                const errorMessage = data.message || data.error || 'Sign up failed';
+                showDialog(`<b>Sign up error:</b> ${errorMessage}`);
+                console.error('Backend Sign Up Error:', errorMessage);
             } else {
+                // 4. Success!
                 showDialog("Sign up successful!<br/>Please check your email to confirm your account.");
-                console.log('Sign up data:', data);
-                // The full user object with metadata will be in data.user.user_metadata after signup
-                console.log('User metadata:', data.user?.user_metadata);
-    
-                // Clear inputs after successful signup
-                nameInput.value = '';
-                emailInput.value = '';
-                mobileInput.value = '';
-                ageInput.value = '';
-                passwordInput.value = '';
-                passwordRepeatInput.value = '';
+                console.log('Sign up successful:', data);
+
+                // Clear inputs
+                document.getElementById('name-ip-su').value = '';
+                document.getElementById('email-ip-su').value = '';
+                document.getElementById('mobile-ip-su').value = '';
+                document.getElementById('age-ip-su').value = '';
+                document.getElementById('password-ip-su').value = '';
+                document.getElementById('password2-ip-su').value = '';
             }
         } catch (err) {
-            showDialog(`<b>An unexpected error occurred:</b> ${err.message}`);
-            console.error('Unhandled Sign Up Error:', err);
+            // Network errors (e.g., Backend is down)
+            showDialog(`<b>Connection Error:</b> Could not reach the server.`);
+            console.error('Network/Unhandled Error:', err);
         }
     }
 
