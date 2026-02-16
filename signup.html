@@ -7,7 +7,8 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
     <body>
-        </div>
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+        <script type="module" src="script.js" defer></script>
         <div class="header">
             <span>KISS Device</span><br>
             <span>Create Account</span>
@@ -19,14 +20,12 @@
             <input id="age-ip-su" class = "ip-box" placeholder="Age"/>
             <input id="password-ip-su" class = "ip-box" placeholder="Password" type="password" required/>
             <input id="password2-ip-su" class = "ip-box" placeholder="Re-enter Password" type="password" required/>
-            <div id="signup-cta-su" class="cta" onclick="handleSignUp()">Sign Up</div><br/>
+            <div id="signup-cta-su" class="cta">Sign Up</div><br/>
             <span class="footer-text">We will never share your info.<br>We just want to connect you.</span>
         </div>
         <dialog>
             <p id="dialog-text"></p>
             <button class="cta dialog-button" autofocus>Okay</button>
         </dialog>
-        <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
-        <script src="script.js" defer></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-import { BACKEND_URL } from './config.js';
+const BACKEND_URL = 'http://192.168.29.124:4000'
 // --- Supabase Client Initialization ---
 const { createClient } = supabase
 const SUPABASE_URL = 'https://jdamkaxhjsnoadheacjq.supabase.co';
@@ -101,6 +101,7 @@ async function handleSignUp() {
     }
 
 }
+document.getElementById('signup-cta-su').addEventListener('click', handleSignUp);
 
 async function handleSignIn() {
     const email = document.getElementById('email-ip').value;
