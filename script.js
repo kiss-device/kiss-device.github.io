@@ -49,13 +49,7 @@ async function handleSignUp() {
     } else {
         //Sign Up Logic
         try {
-            // 1. Prepare the data for the backend
-            // Split name into First and Last since backend typically expects separated names
-            const nameParts = nameInput.trim().split(' ');
-            const firstName = nameParts[0];
-            const lastName = nameParts.slice(1).join(' ') || '';
-
-            // 2. Send request to Express Backend (Not Supabase directly)
+            // Send request to Express Backend (Not Supabase directly)
             const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
@@ -64,8 +58,7 @@ async function handleSignUp() {
                 body: JSON.stringify({
                     email: emailInput,
                     password: passwordInput,
-                    firstName: firstName,
-                    lastName: lastName,
+                    name: nameInput,
                     // Pass these so backend can add them to metadata
                     mobile: mobileInput,
                     age: ageInput ? parseInt(ageInput, 10) : null
